@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using CoreGraphics;
 using Foundation;
 using UIKit;
 
@@ -10,9 +11,24 @@ namespace Acr.Support.iOS {
 
         public static void Present(this UIApplication app, UIViewController controller, bool animated = true, Action action = null) {
             if (NSThread.Current.IsMainThread)
-                app.KeyWindow.RootViewController.PresentViewController(controller, animated, action);
+                PresentInternal(app, controller, animated, action);
             else
-                app.InvokeOnMainThread(() => app.KeyWindow.RootViewController.PresentViewController(controller, animated, action));
+                app.InvokeOnMainThread(() => PresentInternal(app, controller, animated, action));
+        }
+
+
+        static void PresentInternal(UIApplication app, UIViewController controller, bool animated, Action action) {
+            var top = app.GetTopViewController();
+            if (controller.PopoverPresentationController != null) {
+                var x = top.View.Bounds.Width / 2;
+                var y = top.View.Bounds.Bottom;
+                var rect = new CGRect(x, y, 0, 0);
+
+                controller.PopoverPresentationController.SourceView = top.View;
+                controller.PopoverPresentationController.SourceRect = rect;
+                controller.PopoverPresentationController.PermittedArrowDirections = UIPopoverArrowDirection.Unknown;
+            }
+            top.PresentViewController(controller, animated, action);
         }
 
 
@@ -33,7 +49,7 @@ namespace Acr.Support.iOS {
 
 
         public static UIViewController GetTopViewController(this UIApplication app) {
-            var viewController = UIApplication.SharedApplication.KeyWindow.RootViewController;
+            var viewController = app.KeyWindow.RootViewController;
             while (viewController.PresentedViewController != null)
                 viewController = viewController.PresentedViewController;
 
