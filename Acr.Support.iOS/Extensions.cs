@@ -1,11 +1,20 @@
 ﻿using System;
 using System.Linq;
+using Foundation;
 using UIKit;
 
 
 namespace Acr.Support.iOS {
 
     public static class Extensions {
+
+        public static void Present(this UIApplication app, UIViewController controller, bool animated = true, Action action = null) {
+            if (NSThread.Current.IsMainThread)
+                app.KeyWindow.RootViewController.PresentViewController(controller, animated, action);
+            else
+                app.InvokeOnMainThread(() => app.KeyWindow.RootViewController.PresentViewController(controller, animated, action));
+        }
+
 
         public static UIWindow GetTopWindow(this UIApplication app) {
             return app
@@ -24,31 +33,9 @@ namespace Acr.Support.iOS {
 
 
         public static UIViewController GetTopViewController(this UIApplication app) {
-            var root = app.GetTopWindow().RootViewController;
-            var tabs = root as UITabBarController;
-			if (tabs != null) {
-				root = tabs.PresentedViewController ?? tabs.SelectedViewController;
-
-				while (root.PresentedViewController != null)
-					root = GetTopViewController (root.PresentedViewController);
-
-				return root;
-			}
-
-            var nav = root as UINavigationController;
-            if (nav != null)
-                return nav.VisibleViewController;
-
-            while (root.PresentedViewController != null)
-                root = GetTopViewController(root.PresentedViewController);
-
-            return root;
-        }
-
-
-        static UIViewController GetTopViewController(UIViewController viewController) {
-            if (viewController.PresentedViewController != null)
-                return GetTopViewController(viewController.PresentedViewController);
+            var viewController = UIApplication.SharedApplication.KeyWindow.RootViewController;
+            while (viewController.PresentedViewController != null)
+                viewController = viewController.PresentedViewController;
 
             return viewController;
         }

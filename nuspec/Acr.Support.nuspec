@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Acr.Support</id>
-        <version>1.0.0</version>
+        <version>1.0.1-beta1</version>
         <title>ACR Support</title>
         <summary>Utility functions to help manage backend services in android and ios</summary>
         <description>Support libraries for android and ios</description>
@@ -13,6 +13,9 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <tags>windows xamarin xam.pcl</tags>
         <releaseNotes>
+1.0.1
+improved top view controller detection
+
 1.0
 Initial Release
         </releaseNotes>
