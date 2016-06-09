@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acr.Support.Android", "Acr.Support.Android\Acr.Support.Android.csproj", "{AF218BB3-9094-4E39-9FD7-2F529E90EA38}"
 EndProject
@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuspec", "nuspec", "{6BC3A1
 		nuspec\pack.cmd = nuspec\pack.cmd
 		nuspec\push.cmd = nuspec\push.cmd
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acr.Support.tvOS", "Acr.Support.tvOS\Acr.Support.tvOS.csproj", "{004F058B-0E91-42C0-8D5B-D9121D09C439}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{F60B7D62-FE06-4C1D-9BB5-1C0B72044039}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F60B7D62-FE06-4C1D-9BB5-1C0B72044039}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F60B7D62-FE06-4C1D-9BB5-1C0B72044039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{004F058B-0E91-42C0-8D5B-D9121D09C439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{004F058B-0E91-42C0-8D5B-D9121D09C439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{004F058B-0E91-42C0-8D5B-D9121D09C439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{004F058B-0E91-42C0-8D5B-D9121D09C439}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

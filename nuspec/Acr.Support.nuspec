@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Acr.Support</id>
-        <version>2.0.2</version>
+        <version>2.1.0</version>
         <title>ACR Support</title>
         <summary>Utility functions to help manage backend services in android and ios</summary>
         <description>Support libraries for android and ios</description>
@@ -18,9 +18,12 @@ big version, minor update
     </metadata>
     <files>
         <!-- android -->
-        <file src="..\Acr.Support.Android\bin\Release\Acr.Support.Android.dll" target="lib\MonoAndroid10\Acr.Support.Android.dll" />
+        <file src="..\Acr.Support.Android\bin\Release\Acr.Support.*" target="lib\MonoAndroid10\" />
 
         <!-- ios -->
-        <file src="..\Acr.Support.iOS\bin\iPhone\Release\Acr.Support.iOS.dll" target="lib\Xamarin.iOS10\Acr.Support.iOS.dll" />
+        <file src="..\Acr.Support.iOS\bin\iPhone\Release\Acr.Support.*" target="lib\Xamarin.iOS10\" />
+
+        <!-- tvOS -->
+        <file src="..\Acr.Support.tvOS\bin\Release\Acr.Support.*" target="lib\Xamarin.tvOS10\" />
     </files>
 </package>
